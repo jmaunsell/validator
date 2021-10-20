@@ -1462,7 +1462,7 @@ func hasValue(fl FieldLevel) bool {
 		if fl.(*validate).fldIsPointer && field.Interface() != nil {
 			return true
 		}
-		return field.IsValid() && !field.IsZero()
+		return field.IsValid() && field.Interface() != reflect.Zero(field.Type()).Interface()
 	}
 }
 
