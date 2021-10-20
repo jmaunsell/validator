@@ -22,21 +22,24 @@ type innerStructWithPrivateField struct {
 	privateField string
 }
 
-func TestInnerStructWithPrivateField(t *testing.T) {
+func TestHasValue_InnerStructWithPrivateField(t *testing.T) {
 	for _, currCase := range []struct {
 		name        string
 		outerStruct outerStructWithNestedPrivateField
 		expectedErr bool
 	}{
+		// failing
 		{
 			name:        "missing outer struct with nested private field",
 			expectedErr: true,
 		},
+		// failing
 		{
 			name:        "missing inner struct with private field",
 			outerStruct: outerStructWithNestedPrivateField{},
 			expectedErr: true,
 		},
+		// failing
 		{
 			name: "zero value inner struct with private field",
 			outerStruct: outerStructWithNestedPrivateField{
@@ -67,21 +70,24 @@ func TestInnerStructWithPrivateField(t *testing.T) {
 	}
 }
 
-func TestInnerStructWithPublicField(t *testing.T) {
+func TestHasValue_InnerStructWithPublicField(t *testing.T) {
 	for _, currCase := range []struct {
 		name        string
 		outerStruct outerStructWithNestedPublicField
 		expectedErr bool
 	}{
+		// failing
 		{
 			name:        "missing outer struct with nested public field",
 			expectedErr: true,
 		},
+		// failing
 		{
 			name:        "missing inner struct with public field",
 			outerStruct: outerStructWithNestedPublicField{},
 			expectedErr: true,
 		},
+		// failing
 		{
 			name:        "zero value inner struct with public field",
 			outerStruct: outerStructWithNestedPublicField{innerStructWithPublicField{}},
